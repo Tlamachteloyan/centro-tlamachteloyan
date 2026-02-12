@@ -1,18 +1,22 @@
 "use client";
 
 export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
 
-import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export default function DonacionesPage() {
   const [amount, setAmount] = useState(100);
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [cancel, setCancel] = useState(false);
 
-  const searchParams = useSearchParams();
-  const success = searchParams.get("success");
-  const cancel = searchParams.get("cancel");
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("success")) setSuccess(true);
+      if (params.get("cancel")) setCancel(true);
+    }
+  }, []);
 
   const handleDonate = async () => {
     setLoading(true);
