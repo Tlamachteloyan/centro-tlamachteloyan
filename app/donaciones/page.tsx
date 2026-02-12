@@ -1,6 +1,7 @@
 "use client";
 
 export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -8,8 +9,8 @@ import { useSearchParams } from "next/navigation";
 export default function DonacionesPage() {
   const [amount, setAmount] = useState(100);
   const [loading, setLoading] = useState(false);
-  const searchParams = useSearchParams();
 
+  const searchParams = useSearchParams();
   const success = searchParams.get("success");
   const cancel = searchParams.get("cancel");
 
