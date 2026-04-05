@@ -1,110 +1,156 @@
 "use client";
 
-import { useState } from "react";
-import { db } from "../../lib/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import Image from "next/image";
+import AnimatedSection from "@/components/AnimatedSection";
 
 export default function Voluntariado() {
-  const [form, setForm] = useState({
-    nombre: "",
-    email: "",
-    telefono: "",
-    mensaje: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  const handleChange = (e: any) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      await addDoc(collection(db, "voluntarios"), {
-        ...form,
-        fecha: new Date(),
-      });
-
-      setSuccess(true);
-      setForm({
-        nombre: "",
-        email: "",
-        telefono: "",
-        mensaje: "",
-      });
-
-    } catch (error) {
-      console.error(error);
-    }
-
-    setLoading(false);
-  };
-
   return (
-    <main className="max-w-3xl mx-auto p-10 bg-white rounded-xl shadow-sm mt-10">
-      <h1 className="text-3xl font-bold mb-6 text-green-900">
-        Registro de Voluntariado
-      </h1>
+    <main className="bg-white text-slate-900">
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          name="nombre"
-          placeholder="Nombre completo"
-          value={form.nombre}
-          onChange={handleChange}
-          required
-          className="border p-3 rounded-lg"
+      {/* HERO */}
+      <section className="relative h-[70vh] flex items-center justify-center text-center text-white">
+
+        <Image
+          src="/hero2.png"
+          alt="Voluntariado"
+          fill
+          className="object-cover"
         />
 
-        <input
-          name="email"
-          type="email"
-          placeholder="Correo electrónico"
-          value={form.email}
-          onChange={handleChange}
-          required
-          className="border p-3 rounded-lg"
-        />
+        <div className="absolute inset-0 bg-black/60"></div>
 
-        <input
-          name="telefono"
-          placeholder="Teléfono"
-          value={form.telefono}
-          onChange={handleChange}
-          required
-          className="border p-3 rounded-lg"
-        />
-
-        <textarea
-          name="mensaje"
-          placeholder="¿Por qué quieres ser voluntario?"
-          value={form.mensaje}
-          onChange={handleChange}
-          required
-          className="border p-3 rounded-lg"
-        />
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-green-900 text-white p-3 rounded-lg font-semibold"
-        >
-          {loading ? "Enviando..." : "Enviar solicitud"}
-        </button>
-
-        {success && (
-          <p className="text-green-700 font-medium">
-            ¡Solicitud enviada correctamente!
+        <div className="relative z-10 px-6 max-w-3xl">
+          <h1 className="text-4xl md:text-6xl font-bold">
+            Sé parte del cambio
+          </h1>
+          <p className="mt-6 text-lg text-gray-200">
+            Tu tiempo y talento pueden transformar vidas en nuestra comunidad.
           </p>
-        )}
-      </form>
+        </div>
+      </section>
+
+      {/* BENEFICIOS */}
+      <AnimatedSection>
+        <section className="py-20 px-6 max-w-6xl mx-auto text-center">
+
+          <h2 className="text-3xl font-semibold">
+            ¿Por qué ser voluntario?
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+
+            <div className="bg-white p-8 rounded-2xl shadow">
+              <h3 className="font-semibold text-lg">Impacto real</h3>
+              <p className="text-gray-600 mt-3">
+                Contribuye directamente al desarrollo de la comunidad.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow">
+              <h3 className="font-semibold text-lg">Aprendizaje</h3>
+              <p className="text-gray-600 mt-3">
+                Desarrolla habilidades personales y profesionales.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow">
+              <h3 className="font-semibold text-lg">Comunidad</h3>
+              <p className="text-gray-600 mt-3">
+                Forma parte de una red comprometida con el cambio social.
+              </p>
+            </div>
+
+          </div>
+
+        </section>
+      </AnimatedSection>
+
+      {/* TIPOS DE VOLUNTARIADO */}
+      <AnimatedSection>
+        <section className="bg-gray-50 py-20 px-6">
+
+          <div className="max-w-6xl mx-auto">
+
+            <h2 className="text-3xl font-semibold text-center">
+              Áreas de voluntariado
+            </h2>
+
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+
+              <div className="bg-white p-6 rounded-2xl shadow">
+                <h3 className="font-semibold">Educación</h3>
+                <p className="text-gray-600 mt-2">
+                  Apoyo en talleres y formación educativa.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl shadow">
+                <h3 className="font-semibold">Cultura</h3>
+                <p className="text-gray-600 mt-2">
+                  Promoción de tradiciones y lengua.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl shadow">
+                <h3 className="font-semibold">Tecnología</h3>
+                <p className="text-gray-600 mt-2">
+                  Apoyo en la ciberescuela y herramientas digitales.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+      </AnimatedSection>
+
+      {/* FORMULARIO */}
+      <AnimatedSection>
+        <section className="py-20 px-6 max-w-3xl mx-auto">
+
+          <h2 className="text-3xl font-semibold text-center">
+            Únete como voluntario
+          </h2>
+
+          <form className="mt-10 space-y-6">
+
+            <input
+              type="text"
+              placeholder="Nombre completo"
+              className="w-full border p-3 rounded-lg"
+            />
+
+            <input
+              type="email"
+              placeholder="Correo electrónico"
+              className="w-full border p-3 rounded-lg"
+            />
+
+            <select className="w-full border p-3 rounded-lg">
+              <option>Área de interés</option>
+              <option>Educación</option>
+              <option>Cultura</option>
+              <option>Tecnología</option>
+            </select>
+
+            <textarea
+              placeholder="¿Por qué quieres ser voluntario?"
+              className="w-full border p-3 rounded-lg"
+            />
+
+            <button
+              type="submit"
+              className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition"
+            >
+              Enviar solicitud
+            </button>
+
+          </form>
+
+        </section>
+      </AnimatedSection>
+
     </main>
   );
 }
