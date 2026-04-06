@@ -36,7 +36,7 @@ export default function ImpactChart() {
 
           {/* TOOLTIP */}
           <Tooltip
-            formatter={(value: number) => `${value}%`}
+            formatter={(value) => `${value}%`}
             contentStyle={{
               borderRadius: "10px",
               border: "none",
@@ -56,7 +56,7 @@ export default function ImpactChart() {
             <LabelList
               dataKey="porcentaje"
               position="top"
-              formatter={(value: number) => `${value}%`}
+              formatter={(value) => `${value}%`}
               style={{
                 fill: "#374151",
                 fontWeight: "bold",

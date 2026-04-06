@@ -6,7 +6,7 @@ export default function FloatingSocialMenu() {
   const [open, setOpen] = useState(false);
 
   const whatsappUrl =
-    "https://wa.me/527771234567?text=Hola, quiero información sobre el Centro Comunitario Tlamachteloyan";
+    "https://wa.me/527342790702?text=Hola, quiero información sobre el Centro Comunitario Tlamachteloyan";
 
   const facebookUrl = "https://facebook.com/tuPagina";
 

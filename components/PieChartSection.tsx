@@ -34,7 +34,7 @@ export default function PieChartSection() {
               <Cell key={index} fill={colors[index]} />
             ))}
           </Pie>
-          <Tooltip formatter={(value: number) => `${value}%`} />
+          <Tooltip formatter={(value: any) => `${value}%`} />
         </PieChart>
       </ResponsiveContainer>
 

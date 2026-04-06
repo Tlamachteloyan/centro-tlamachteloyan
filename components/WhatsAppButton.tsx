@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 export default function WhatsAppButton() {
-  const phone = "527771234567";
+  const phone = "527342790702"; // Reemplaza con tu número de teléfono en formato internacional (sin signos ni espacios)
   const message =
     "Hola, quiero información sobre el Centro Comunitario Tlamachteloyan";
 
