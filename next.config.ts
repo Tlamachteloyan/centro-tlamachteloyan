@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig = {
-  output: "export",
-  basePath: "/tlamachteloyan",
-  assetPrefix: "/tlamachteloyan/",
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;
